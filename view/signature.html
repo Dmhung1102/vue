@@ -12,178 +12,175 @@
   <title>Document</title>
 </head>
 <body>
-<div class="navbar-custom position-fixed top-0 start-0 w-100" id="signature">
-  <div class="logo-box p-3 px-5">
-    <a href="/" class="logo logo-light text-center">
+<div class="" id="signature">
+  <div class="navbar-custom position-fixed top-0 start-0 w-100">
+    <div class="logo-box p-3 px-5">
+      <a href="/" class="logo logo-light text-center">
           <span class="logo-lg">
             <img src="https://we.adtrue.io/assets/images/logo-adtrue-white.png" alt="" height="20">
           </span>
-    </a>
+      </a>
+    </div>
   </div>
-</div>
-<div class="left-side-menu">
-  <div class="h-100 menuitem-active" data-simplebar="init">
-    <!--- Sidemenu -->
-    <div id="sidebar-menu" class="show">
-      <ul id="side-menu">
-        <li class="menuitem-active">
-          <a href="" class="active">
+  <div class="left-side-menu">
+    <div class="h-100 menuitem-active" data-simplebar="init">
+      <!--- Sidemenu -->
+      <div id="sidebar-menu" class="show">
+        <ul id="side-menu">
+          <li @click="currentCompany = 'adtrue'" :class="{active: currentCompany==='adtrue'}">
             <img src="https://adtrue.com/images/favicon-icon.png" style="height:21px; margin:0 3px;" alt="">
             <span>AdTrue Signature</span>
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <img src="https://pixon.games/assets/brand/favicon.png?v=1" style="height:21px; margin:0 3px;"
-                 alt="">
+          </li>
+          <li @click="currentCompany = 'pixon'" :class="{active: currentCompany==='pixon'}">
+            <img src="https://pixon.games/assets/brand/favicon.png?v=1" style="height:21px; margin:0 3px;" alt="">
             <span>PixOn Signature</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-    <!-- End Sidebar -->
-  </div>
-  <!-- Sidebar -left -->
-
-</div>
-<div class="content-page" style="background-color: #f5f5f5">
-  <div class="content">
-    <div class="container-fluid ">
-      <div class="page-title-box">
-        <h4 class="page-title">Signature Generator</h4>
+          </li>
+        </ul>
       </div>
-      <div class="card">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-lg-5">
-              <div id="rawSigHolderPreview" class="sig-holder">
-                <table>
-                  <tbody>
-                  <tr>
-                    <th rowspan="8" style="vertical-align:top; padding-right: 25px; padding-top: 15px;"><img
-                      style="width:200px;" src="https://adtrue.com/images/logo-adtrue.png" border="0"></th>
-                  </tr>
-                  <tr>
-                    <td style="color:#000000; font-size:14px; font-weight: bold;"><strong>DM Hung (Ms)</strong></td>
-                  </tr>
-                  <tr>
-                    <td style="color:#696969; padding-bottom:10px; font-size:13px;">Detective</td>
-                  </tr>
-                  <tr>
-                    <td style="color:#696969; font-size:13px;">FPT Adtrue .,JSC</td>
-                  </tr>
-                  <tr>
-                    <td style="color:#696969; font-size:13px;">7th floor, FPT Tower, No.10 Pham Van Bach, Cau Giay
-                      Dist., Hanoi., Vietnam.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="color:#696969; padding-bottom:10px; font-size:13px;"> Website: <a target="_blank"
-                                                                                                 href="https://adtrue.com"
-                                                                                                 style="color:#696969; text-decoration:none;">www.adtrue.com</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a target="_blank" href="https://www.facebook.com/adtruecom/" style="margin-right:8px;"><img
-                      height="18" style="margin-left:0px" src="https://adtrue.com/images/icon/icon-f.png"></a>&nbsp;&nbsp;<a
-                      target="_blank" href="https://www.linkedin.com/company/fpt-adtrue.-jsc/"><img height="18"
-                                                                                                    src="https://adtrue.com/images/icon/icon-in.png"></a>
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-              <hr>
-              <!--  <div id="rawSigHolder" class="sig-holder">
+      <!-- End Sidebar -->
+    </div>
+    <!-- Sidebar -left -->
 
-               </div>
-               <hr> -->
-              <div class="use-chrome-warning mb-3"><i class="bi bi-exclamation-triangle text-warning"></i> Please Use
-                Chrome For This Copy Feature
+  </div>
+  <div class="content-page" style="background-color: #f5f5f5">
+    <div class="content">
+      <div class="container-fluid ">
+        <div class="page-title-box">
+          <h4 class="page-title">{{ companyInfo[currentCompany].title }}</h4>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-5">
+                <div id="rawSigHolderPreview" class="sig-holder">
+                  <table>
+                    <tbody>
+                    <tr>
+                      <th rowspan="8" style="vertical-align:top; padding-right: 25px; padding-top: 15px;"><img
+                        alt="" style="width:200px;" :src="companyInfo[currentCompany].logo"></th>
+                    </tr>
+                    <tr>
+                      <td style="color:#000000; font-size:14px; font-weight: bold;"><strong>DM Hung (Ms)</strong></td>
+                    </tr>
+                    <tr>
+                      <td style="color:#696969; padding-bottom:10px; font-size:13px;">Detective</td>
+                    </tr>
+                    <tr>
+                      <td style="color:#696969; font-size:13px;">FPT Adtrue .,JSC</td>
+                    </tr>
+                    <tr>
+                      <td style="color:#696969; font-size:13px;">{{ companyInfo[currentCompany].address }}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="color:#696969; padding-bottom:10px; font-size:13px;"> Website: <a target="_blank" :href=" companyInfo[currentCompany].web" style="color:#696969; text-decoration:none;">{{ companyInfo[currentCompany].web }}
+                      </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a target="_blank" :href="companyInfo[currentCompany].facebook" style="margin-right:8px;">
+                          <img alt="" height="18" style="margin-left:0" src="https://adtrue.com/images/icon/icon-f.png">
+                        </a>&nbsp;&nbsp;
+                        <a target="_blank" :href="companyInfo[currentCompany].linkedin">
+                          <img alt="" height="18" src="https://adtrue.com/images/icon/icon-in.png"></a>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <hr>
+                <!--  <div id="rawSigHolder" class="sig-holder">
+
+                 </div>
+                 <hr> -->
+                <div class="use-chrome-warning mb-3"><i class="bi bi-exclamation-triangle text-warning"></i> Please Use
+                  Chrome For This Copy Feature
+                </div>
+                <hr>
               </div>
-              <hr>
-            </div>
-            <div class="col-lg-7">
-              <form id="generateSignature" onsubmit="event.preventDefault(); generateSignature();">
-                <div class="form-group row mb-3">
-                  <label class="form-label col-sm-2">Image</label>
-                  <div class="col-sm-5"><input class="form-control" id="inputImage" name="inputImage"
-                                               value="https://adtrue.com/images/logo-adtrue.png"></div>
-                  <div class="col-sm-5">
-                    <div class="input-group">
-                      <button class="btn btn-secondary">Width</button>
-                      <input class="form-control" id="inputImageSize" name="inputImageSize" type="number" min="100"
-                             max="300" step="1" value="200">
+              <div class="col-lg-7">
+                <form id="generateSignature">
+                  <div class="form-group row mb-3">
+                    <label class="form-label col-sm-2">Image</label>
+                    <div class="col-sm-5"><input class="form-control" id="inputImage" name="inputImage"
+                                                 value="https://adtrue.com/images/logo-adtrue.png"></div>
+                    <div class="col-sm-5">
+                      <div class="input-group">
+                        <button class="btn btn-secondary">Width</button>
+                        <input class="form-control" id="inputImageSize" name="inputImageSize" type="number" min="100"
+                               max="300" step="1" value="200">
+                      </div>
+                    </div>
+                    <div class="col-sm-5 offset-sm-2 mt-2">
+                      <div class="input-group input-group-sm">
+                        <button class="btn btn-secondary">Margin Top</button>
+                        <input type="number" min="0" max="50" step="1" name="inputImageTop" class="form-control"
+                               id="inputImageTop" value="15">
+                      </div>
+                    </div>
+                    <div class="col-sm-5 mt-2">
+                      <div class="input-group input-group-sm">
+                        <button class="btn btn-secondary">Position</button>
+                        <select name="inputImagePosition" class="form-control form-select" id="inputImagePosition">
+                          <option value="left">Left</option>
+                          <option value="top">Top</option>
+                          <option value="bottom">Bottom</option>
+                        </select>
+                      </div>
                     </div>
                   </div>
-                  <div class="col-sm-5 offset-sm-2 mt-2">
-                    <div class="input-group input-group-sm">
-                      <button class="btn btn-secondary">Margin Top</button>
-                      <input type="number" min="0" max="50" step="1" name="inputImageTop" class="form-control"
-                             id="inputImageTop" value="15">
+                  <div class="form-group row mb-3">
+                    <label class="form-label col-sm-2">Name</label>
+                    <div class="col-sm-5"><input class="form-control" required="" id="inputName" name="inputName"
+                                                 value="DM Hung"></div>
+                    <div class="col-sm-2"><input class="form-control" required="" id="inputNameExt" name="inputNameExt"
+                                                 placeholder="Name Ext" value=" (Ms)"></div>
+                    <div class="col-sm-3"><input class="form-control" placeholder="Your Title" id="inputTitle"
+                                                 name="inputTitle" value="Detective"></div>
+                    <div class="col-sm-5 offset-sm-2 mt-2">
+                      <div class="input-group input-group-sm">
+                        <button class="btn btn-secondary">Name Size</button>
+                        <input type="number" min="13" max="40" step="1" name="inputNameSize"
+                               class="form-control w-auto form-control-sm" id="inputNameSize" value="14">
+                      </div>
                     </div>
                   </div>
-                  <div class="col-sm-5 mt-2">
-                    <div class="input-group input-group-sm">
-                      <button class="btn btn-secondary">Position</button>
-                      <select name="inputImagePosition" class="form-control form-select" id="inputImagePosition">
-                        <option value="left">Left</option>
-                        <option value="top">Top</option>
-                        <option value="bottom">Bottom</option>
-                      </select>
+                  <div class="form-group row mb-3">
+                    <label class="form-label col-sm-2">Phone/ Skype</label>
+                    <div class="col-sm-5"><input class="form-control" id="inputPhone" name="inputPhone" value=""></div>
+                    <div class="col-sm-5"><input class="form-control" id="inputSkype" name="inputSkype" value=""></div>
+                  </div>
+                  <div class="form-group row mb-3">
+                    <label class="form-label col-sm-2">Website/ Link</label>
+                    <div class="col-sm-5"><input class="form-control" placeholder="Website Name" id="inputWebsite"
+                                                 name="inputWebsite" :value="companyInfo[currentCompany].web"></div>
+                    <div class="col-sm-5"><input class="form-control" placeholder="Website Link" id="inputWebsiteLink"
+                                                 name="inputWebsiteLink" :value="companyInfo[currentCompany].web"></div>
+                  </div>
+                  <div class="form-group row mb-3">
+                    <label class="form-label col-sm-2">Company/ Add</label>
+                    <div class="col-sm-4"><input class="form-control" id="inputCompany" name="inputCompany"
+                                                 :value="companyInfo[currentCompany].name"></div>
+                    <div class="col-sm-6"><input class="form-control" id="inputAddress" name="inputAddress"
+                                                 :value="companyInfo[currentCompany].address">
                     </div>
                   </div>
-                </div>
-                <div class="form-group row mb-3">
-                  <label class="form-label col-sm-2">Name</label>
-                  <div class="col-sm-5"><input class="form-control" required="" id="inputName" name="inputName"
-                                               value="DM Hung"></div>
-                  <div class="col-sm-2"><input class="form-control" required="" id="inputNameExt" name="inputNameExt"
-                                               placeholder="Name Ext" value=" (Ms)"></div>
-                  <div class="col-sm-3"><input class="form-control" placeholder="Your Title" id="inputTitle"
-                                               name="inputTitle" value="Detective"></div>
-                  <div class="col-sm-5 offset-sm-2 mt-2">
-                    <div class="input-group input-group-sm">
-                      <button class="btn btn-secondary">Name Size</button>
-                      <input type="number" min="13" max="40" step="1" name="inputNameSize"
-                             class="form-control w-auto form-control-sm" id="inputNameSize" value="14">
-                    </div>
+                  <div class="form-group row mb-3">
+                    <label class="form-label col-sm-2">Facebook</label>
+                    <div class="col-sm-10"><input class="form-control" id="inputFacebook" name="inputFacebook"
+                                                  :value="companyInfo[currentCompany].facebook"></div>
                   </div>
-                </div>
-                <div class="form-group row mb-3">
-                  <label class="form-label col-sm-2">Phone/ Skype</label>
-                  <div class="col-sm-5"><input class="form-control" id="inputPhone" name="inputPhone" value=""></div>
-                  <div class="col-sm-5"><input class="form-control" id="inputSkype" name="inputSkype" value=""></div>
-                </div>
-                <div class="form-group row mb-3">
-                  <label class="form-label col-sm-2">Website/ Link</label>
-                  <div class="col-sm-5"><input class="form-control" placeholder="Website Name" id="inputWebsite"
-                                               name="inputWebsite" value="www.adtrue.com"></div>
-                  <div class="col-sm-5"><input class="form-control" placeholder="Website Link" id="inputWebsiteLink"
-                                               name="inputWebsiteLink" value="https://adtrue.com"></div>
-                </div>
-                <div class="form-group row mb-3">
-                  <label class="form-label col-sm-2">Company/ Add</label>
-                  <div class="col-sm-4"><input class="form-control" id="inputCompany" name="inputCompany"
-                                               value="FPT Adtrue .,JSC"></div>
-                  <div class="col-sm-6"><input class="form-control" id="inputAddress" name="inputAddress"
-                                               value="7th floor, FPT Tower, No.10 Pham Van Bach, Cau Giay Dist., Hanoi., Vietnam.">
+                  <div class="form-group row mb-3">
+                    <label class="form-label col-sm-2">LinkedIn</label>
+                    <div class="col-sm-10"><input class="form-control" id="inputLinkedIn" name="inputLinkedIn"
+                                                  :value="companyInfo[currentCompany].linkedin"></div>
                   </div>
-                </div>
-                <div class="form-group row mb-3">
-                  <label class="form-label col-sm-2">Facebook</label>
-                  <div class="col-sm-10"><input class="form-control" id="inputFacebook" name="inputFacebook"
-                                                value="https://www.facebook.com/adtruecom/"></div>
-                </div>
-                <div class="form-group row mb-3">
-                  <label class="form-label col-sm-2">LinkedIn</label>
-                  <div class="col-sm-10"><input class="form-control" id="inputLinkedIn" name="inputLinkedIn"
-                                                value="https://www.linkedin.com/company/fpt-adtrue.-jsc/"></div>
-                </div>
-                <!-- <div class="row">
-                    <div class="col-sm-10 offset-sm-2"><button class="btn btn-primary" type="Submit"><i class="fas fa-marker"></i> Generate Signature</button></div>
-                </div> -->
-              </form>
+                  <!-- <div class="row">
+                      <div class="col-sm-10 offset-sm-2"><button class="btn btn-primary" type="Submit"><i class="fas fa-marker"></i> Generate Signature</button></div>
+                  </div> -->
+                </form>
+              </div>
             </div>
           </div>
         </div>
@@ -191,12 +188,35 @@
     </div>
   </div>
 </div>
-
 <script>
-  const { fillData, ref} = Vue;
-  fillData({
+  const {createApp, ref} = Vue;
+  createApp({
     setup() {
-
+      const companyInfo = {
+        adtrue: {
+          name: 'FPT Adtrue .,JSC',
+          logo: 'https://adtrue.com/images/about-img.png',
+          title: 'Signature Generator',
+          address: '7th floor, FPT Tower, No.10 Pham Van Bach, Cau Giay Dist., Hanoi., Vietnam.',
+          web: 'https://adtrue.com',
+          linkedin:'https://www.linkedin.com/company/fpt-adtrue.-jsc/',
+          facebook:'https://www.facebook.com/adtruecom/'
+        },
+        pixon: {
+          name: 'PIXON PTE. LTD.',
+          logo: 'https://pixon.games/assets/images/logo/pixon-60.png',
+          title: 'PixOn Signature Generator',
+          address: '10 ANSON ROAD #22-02 INTERNATIONAL PLAZA SINGAPORE (079903)',
+          web: 'https://pixon.games',
+          linkedin:'https://www.linkedin.com/company/pixongamestudio/',
+          facebook: 'https://www.facebook.com/pixongamestudio',
+        }
+      }
+      const currentCompany = ref('adtrue')
+      return {
+        companyInfo,
+        currentCompany
+      }
     }
   }).mount('#signature');
 </script>

@@ -57,3 +57,7 @@ a {
   line-height: 75px;
   color: #323a46;
 }
+
+#sidebar-menu .active {
+  color: #00acc1;
+}
